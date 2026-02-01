@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Tuwaiq Pay | طويق باي",
   description: "Smart Payment Solutions for Freelancers and Businesses in Saudi Arabia",
   icons: {
-    icon: '/logo.png',
+    icon: '/Logo.png',
   },
 };
 

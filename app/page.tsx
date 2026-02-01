@@ -1,6 +1,6 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import About from "../Components/About/Page";
 import AcceptPayments from "../Components/AcceptPayments/Page";
 import AppFeatures from "../Components/AppFeatures/Page";
@@ -11,7 +11,7 @@ import Header from "../Components/Header/page";
 import Hero from "../Components/Hero/page";
 import Plans from "../Components/Plans/Page";
 
-export default function Home() {
+function HomeContent() {
   const searchParams = useSearchParams();
   const [currentLang, setCurrentLang] = useState('EN');
 
@@ -21,7 +21,7 @@ export default function Home() {
     if (lang === 'AR' || lang === 'EN') {
       handleLanguageChange(lang);
     }
-  }, []);
+  }, [searchParams]);
 
   const handleLanguageChange = (langCode: string) => {
     setCurrentLang(langCode);
@@ -46,5 +46,13 @@ export default function Home() {
       <Contact currentLang={currentLang} />
       <Footer currentLang={currentLang} />
     </main>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={null}>
+      <HomeContent />
+    </Suspense>
   );
 }

@@ -1,12 +1,12 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import AnimatedBackground from "../../Components/AnimatedBackground";
 import BlogCard from "../../Components/BlogCard";
 import Footer from "../../Components/Footer/Page";
 import Header from "../../Components/Header/page";
 
-export default function Blogs() {
+function BlogsContent() {
   const searchParams = useSearchParams();
   const [currentLang, setCurrentLang] = useState('EN');
   const [visibleCount, setVisibleCount] = useState(6);
@@ -17,7 +17,7 @@ export default function Blogs() {
     if (lang === 'AR' || lang === 'EN') {
       handleLanguageChange(lang);
     }
-  }, []);
+  }, [searchParams]);
 
   const handleLanguageChange = (langCode: string) => {
     setCurrentLang(langCode);
@@ -351,5 +351,13 @@ export default function Blogs() {
 
       <Footer currentLang={currentLang} />
     </main>
+  );
+}
+
+export default function Blogs() {
+  return (
+    <Suspense fallback={null}>
+      <BlogsContent />
+    </Suspense>
   );
 }
