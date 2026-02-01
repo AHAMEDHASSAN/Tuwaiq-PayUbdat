@@ -25,7 +25,7 @@ function Hero({ currentLang }) {
     const t = content[currentLang] || content.EN;
 
     return (
-        <section className={`w-full bg-gray-100 min-h-[calc(100vh-80px)] flex items-center overflow-x-hidden py-8 lg:py-12 relative ${isAr ? 'font-sans' : ''}`} dir={isAr ? 'rtl' : 'ltr'}>
+        <section className={`w-full bg-gray-100 min-h-[calc(100vh-80px)] flex items-center overflow-hidden py-8 lg:py-12 relative ${isAr ? 'font-sans' : ''}`} dir={isAr ? 'rtl' : 'ltr'}>
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 w-full h-full">
                 
                 {/* Left Column: Text & Buttons */}

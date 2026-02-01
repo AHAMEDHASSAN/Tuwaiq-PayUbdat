@@ -10,6 +10,8 @@ function Footer({ currentLang }) {
             whatsApp: "WhatsApp",
             callCenter: "Call Center",
             email: "Email",
+            locationLabel: "Our Office",
+            address: "Kingdom of Saudi Arabia, Jubail, Al-Dana District, 26th Street",
             aboutUs: "About us",
             features: "Features",
             pricing: "Pricing",
@@ -27,6 +29,8 @@ function Footer({ currentLang }) {
             whatsApp: "واتساب",
             callCenter: "مركز الاتصال",
             email: "البريد الإلكتروني",
+            locationLabel: "مقرنا",
+            address: "المملكة العربية السعودية، الجبيل، حي الدانة، شارع 26",
             aboutUs: "من نحن",
             features: "المميزات",
             pricing: "الأسعار",
@@ -61,7 +65,7 @@ function Footer({ currentLang }) {
                         <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 md:mb-10 text-left rtl:text-right">{t.reachUs}</h3>
                         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-4 lg:gap-8 text-left rtl:text-right">
                             {/* WhatsApp */}
-                            <a href="https://wa.me/966509964000" className="flex items-center gap-4 group">
+                            <a href="https://api.whatsapp.com/message/UY24PCKYYXXBN1?autoload=1&app_absent=0" className="flex items-center gap-4 group">
                                 <div className="w-14 h-14 rounded-full bg-[#1F2937] flex items-center justify-center transition-all group-hover:bg-[#2a3a4a]">
                                     <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -95,6 +99,17 @@ function Footer({ currentLang }) {
                                 </div>
                             </a>
                         </div>
+
+                        {/* Address Row - Separate for better readability */}
+                        <div className="mt-10 pt-8 border-t border-gray-800/50 flex items-center gap-4 group">
+                            <div className="w-12 h-12 rounded-full bg-[#1F2937] flex-shrink-0 flex items-center justify-center transition-all group-hover:bg-[#2a3a4a]">
+                                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                            </div>
+                            <div className="text-left rtl:text-right">
+                                <div className="text-gray-400 text-xs mb-0.5">{t.locationLabel}</div>
+                                <div className="text-white font-bold text-sm md:text-base leading-relaxed">{t.address}</div>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Follow Us Section */}
@@ -104,15 +119,17 @@ function Footer({ currentLang }) {
                         </h3>
                         <div className="flex items-center justify-start gap-6 md:gap-4 flex-wrap">
                             {[
-                                { id: 'linkedin' },
-                                { id: 'x' },
-                                { id: 'instagram' },
-                                { id: 'tiktok' },
-                                { id: 'facebook' }
+                                { id: 'linkedin', href: 'https://www.linkedin.com/company/tuwaiq-pay/' },
+                                { id: 'x', href: 'https://x.com/tuwaiqpay?s=21' },
+                                { id: 'instagram', href: 'https://www.instagram.com/tuwaiqpay?igsh=ejRvd3VqZGl3cG84&utm_source=qr' },
+                                { id: 'tiktok', href: 'https://www.tiktok.com/@tuwaiqpay?_t=ZS-8tQ35aA8kuW&_r=1' },
+                                { id: 'facebook', href: '#' }
                             ].map((social, idx) => (
                                 <a 
                                     key={idx} 
-                                    href="#" 
+                                    href={social.href} 
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#111827] flex items-center justify-center border border-gray-800 hover:bg-[#1F2937] transition-all"
                                 >
                                     {social.id === 'linkedin' && (
@@ -154,7 +171,7 @@ function Footer({ currentLang }) {
 
                     {/* App Buttons - Second on Mobile, Right on Desktop */}
                     <div className="flex items-center justify-center gap-3 md:gap-4 w-full md:w-auto order-2 xl:order-3">
-                        <a href="#" className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-gradient-to-b from-[#1F2937] to-[#111827] border border-gray-800 px-4 md:px-7 py-2.5 md:py-3 rounded-full hover:border-gray-700 transition-all">
+                        <a href="https://apps.apple.com/eg/app/tuwaiq-pay/id6745802564" target="_blank" rel="noopener noreferrer" className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-gradient-to-b from-[#1F2937] to-[#111827] border border-gray-800 px-4 md:px-7 py-2.5 md:py-3 rounded-full hover:border-gray-700 transition-all">
                             <img src="/AppStore.png" alt="App Store" className="h-5 w-5 md:h-7 md:w-7 object-contain brightness-0 invert" />
                             <div className="flex flex-col items-start leading-none text-left">
                                 <span className="text-[8px] md:text-[10px] text-gray-500 mb-0.5 md:mb-1">{t.appStoreSub}</span>
@@ -162,7 +179,7 @@ function Footer({ currentLang }) {
                             </div>
                         </a>
                         
-                        <a href="#" className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-gradient-to-b from-[#1F2937] to-[#111827] border border-gray-800 px-4 md:px-7 py-2.5 md:py-3 rounded-full hover:border-gray-700 transition-all">
+                        <a href="https://play.google.com/store/apps/details?id=com.tuwaiq.tuwaiq_pay&pli=1" target="_blank" rel="noopener noreferrer" className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-gradient-to-b from-[#1F2937] to-[#111827] border border-gray-800 px-4 md:px-7 py-2.5 md:py-3 rounded-full hover:border-gray-700 transition-all">
                             <img src="/GooglePlay.png" alt="Google Play" className="h-5 w-5 md:h-7 md:w-7 object-contain" />
                             <div className="flex flex-col items-start leading-none text-left">
                                 <span className="text-[8px] md:text-[10px] text-gray-500 mb-0.5 md:mb-1 uppercase tracking-wider">{t.googlePlaySub}</span>

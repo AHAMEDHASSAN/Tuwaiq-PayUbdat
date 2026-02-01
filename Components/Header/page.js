@@ -1,12 +1,21 @@
 "use client";
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 function Header({ currentLang, onLanguageSwitch }) {
     const pathname = usePathname();
     const router = useRouter();
+    const searchParams = useSearchParams();
     const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+    
+    // Sync language from URL on mount
+    useEffect(() => {
+        const langCode = searchParams.get('lang');
+        if (langCode && (langCode === 'EN' || langCode === 'AR') && langCode !== currentLang) {
+            onLanguageSwitch(langCode);
+        }
+    }, [searchParams, onLanguageSwitch, currentLang]);
 
     // Translations + routes (same order for EN & AR)
     const menuItems = {
@@ -15,7 +24,7 @@ function Header({ currentLang, onLanguageSwitch }) {
             { name: 'About us', href: '/#about-us' },
             { name: 'Features', href: '/features' },
             { name: 'FAQs', href: '/#faqs' },
-            { name: 'Blogs', href: 'https://blog.tuwaiqpay.com.sa/' },
+            { name: 'Blogs', href: '/blogs' },
             { name: 'Pricing', href: '/#pricing' },
             { name: 'Contact', href: '/#contact' }
         ],
@@ -24,7 +33,7 @@ function Header({ currentLang, onLanguageSwitch }) {
             { name: 'من نحن', href: '/#about-us' },
             { name: 'المميزات', href: '/features' },
             { name: 'الأسئلة الشائعة', href: '/#faqs' },
-            { name: 'المدونة', href: 'https://blog.tuwaiqpay.com.sa/' },
+            { name: 'المدونة', href: '/blogs' },
             { name: 'الأسعار', href: '/#pricing' },
             { name: 'اتصل بنا', href: '/#contact' }
         ]
@@ -59,6 +68,9 @@ function Header({ currentLang, onLanguageSwitch }) {
     const toggleLangMenu = () => setIsLangMenuOpen(!isLangMenuOpen);
 
     const switchLanguage = (langCode) => {
+        const params = new URLSearchParams(searchParams.toString());
+        params.set('lang', langCode);
+        router.push(`${pathname}?${params.toString()}`);
         onLanguageSwitch(langCode);
         setIsLangMenuOpen(false);
     };
@@ -72,6 +84,13 @@ function Header({ currentLang, onLanguageSwitch }) {
     const handleNavigation = (e, href) => {
         e.preventDefault();
         
+        // Append current language to internal URLs
+        let targetHref = href;
+        if (!href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel')) {
+            const separator = href.includes('?') ? '&' : '?';
+            targetHref = `${href}${separator}lang=${currentLang}`;
+        }
+
         // Handle external links
         if (href.startsWith('http')) {
             window.open(href, '_blank');
@@ -95,7 +114,7 @@ function Header({ currentLang, onLanguageSwitch }) {
         }
 
         // Default navigation for other cases or different pages
-        router.push(href);
+        router.push(targetHref);
         setIsMobileMenuOpen(false);
     };
 

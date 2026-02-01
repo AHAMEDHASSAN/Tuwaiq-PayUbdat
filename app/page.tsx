@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import About from "../Components/About/Page";
 import AcceptPayments from "../Components/AcceptPayments/Page";
 import AppFeatures from "../Components/AppFeatures/Page";
@@ -11,7 +12,16 @@ import Hero from "../Components/Hero/page";
 import Plans from "../Components/Plans/Page";
 
 export default function Home() {
+  const searchParams = useSearchParams();
   const [currentLang, setCurrentLang] = useState('EN');
+
+  // Initial language sync from URL
+  useEffect(() => {
+    const lang = searchParams.get('lang');
+    if (lang === 'AR' || lang === 'EN') {
+      handleLanguageChange(lang);
+    }
+  }, []);
 
   const handleLanguageChange = (langCode: string) => {
     setCurrentLang(langCode);

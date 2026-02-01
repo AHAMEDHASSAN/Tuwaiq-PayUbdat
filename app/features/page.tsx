@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import AppFeaturesGrid from "../../Components/AppFeaturesGrid/Page";
 import EcommerceIntegrations from "../../Components/EcommerceIntegrations/Page";
 import FeaturesHero from "../../Components/FeaturesHero/Page";
@@ -9,7 +10,16 @@ import PaymentLinks from "../../Components/PaymentLinks/Page";
 import SoftPOS from "../../Components/SoftPOS/Page";
 
 export default function FeaturesPage() {
+  const searchParams = useSearchParams();
   const [currentLang, setCurrentLang] = useState("EN");
+
+  // Initial language sync from URL
+  useEffect(() => {
+    const lang = searchParams.get('lang');
+    if (lang === 'AR' || lang === 'EN') {
+      handleLanguageChange(lang);
+    }
+  }, []);
 
   const handleLanguageChange = (langCode: string) => {
     setCurrentLang(langCode);
