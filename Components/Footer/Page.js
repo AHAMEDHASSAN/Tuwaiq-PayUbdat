@@ -123,7 +123,7 @@ function Footer({ currentLang }) {
                                 { id: 'x', href: 'https://x.com/tuwaiqpay?s=21' },
                                 { id: 'instagram', href: 'https://www.instagram.com/tuwaiqpay?igsh=ejRvd3VqZGl3cG84&utm_source=qr' },
                                 { id: 'tiktok', href: 'https://www.tiktok.com/@tuwaiqpay?_t=ZS-8tQ35aA8kuW&_r=1' },
-                                { id: 'facebook', href: '#' }
+                                { id: 'facebook', href: 'https://www.facebook.com/mhammad.almal' }
                             ].map((social, idx) => (
                                 <a 
                                     key={idx} 
