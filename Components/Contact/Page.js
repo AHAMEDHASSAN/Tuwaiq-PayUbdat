@@ -1,7 +1,15 @@
-"use client";
+import { useState } from "react";
 
 function Contact({ currentLang }) {
     const isAr = currentLang === 'AR';
+
+    const [formData, setFormData] = useState({
+        fullName: '',
+        phone: '',
+        subject: '',
+        message: ''
+    });
+    const [status, setStatus] = useState('idle'); // idle, loading, success, error
 
     const content = {
         EN: {
@@ -11,6 +19,9 @@ function Contact({ currentLang }) {
             subject: "Subject",
             body: "Body",
             submit: "Submit",
+            loading: "Sending...",
+            success: "Sent Successfully!",
+            error: "Failed to send. Try again."
         },
         AR: {
             title: "اتصل بنا",
@@ -19,10 +30,46 @@ function Contact({ currentLang }) {
             subject: "الموضوع",
             body: "الرسالة",
             submit: "إرسال",
+            loading: "جاري الإرسال...",
+            success: "تم الإرسال بنجاح!",
+            error: "فشل الإرسال. حاول مرة أخرى."
         }
     };
 
     const t = content[currentLang] || content.EN;
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('loading');
+
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwd01ULm2K55noqP-FL_6d8EOz8RrPdpSXMzku3DMyB_bRSkDMGtXUSHOx6sy0IoreO/exec';
+
+        try {
+            // Sending as JSON string to match the user's old script logic (JSON.parse(e.postData.contents))
+            await fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'text/plain', // Use text/plain to avoid CORS preflight while sending JSON string
+                },
+                body: JSON.stringify(formData)
+            });
+
+            setStatus('success');
+            setFormData({ fullName: '', phone: '', subject: '', message: '' });
+            
+            setTimeout(() => setStatus('idle'), 5000);
+        } catch (error) {
+            console.error('Form Submission Error:', error);
+            setStatus('error');
+            setTimeout(() => setStatus('idle'), 5000);
+        }
+    };
 
     return (
         <section id="contact" className={`w-full bg-white py-12 md:py-20 overflow-hidden ${isAr ? 'font-sans' : ''}`} dir={isAr ? 'rtl' : 'ltr'}>
@@ -59,32 +106,57 @@ function Contact({ currentLang }) {
                         <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-8 md:mb-10 text-center lg:text-left">
                             {t.title}
                         </h2>
-                        <form className="space-y-4 md:space-y-6">
+                        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                             <input 
                                 type="text" 
+                                name="fullName"
+                                value={formData.fullName}
+                                onChange={handleChange}
+                                required
                                 placeholder={t.fullName}
                                 className={`w-full px-6 py-4 rounded-[20px] border-none bg-white text-gray-900 placeholder-[#94A3B8] shadow-sm focus:ring-2 focus:ring-[#3B82F6] transition-all ${isAr ? 'text-right' : 'text-left'}`}
                             />
                             <input 
                                 type="tel" 
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleChange}
+                                required
                                 placeholder={t.phoneNumber}
                                 className={`w-full px-6 py-4 rounded-[20px] border-none bg-white text-gray-900 placeholder-[#94A3B8] shadow-sm focus:ring-2 focus:ring-[#3B82F6] transition-all ${isAr ? 'text-right' : 'text-left'}`}
                             />
                             <input 
                                 type="text" 
+                                name="subject"
+                                value={formData.subject}
+                                onChange={handleChange}
+                                required
                                 placeholder={t.subject}
                                 className={`w-full px-6 py-4 rounded-[20px] border-none bg-white text-gray-900 placeholder-[#94A3B8] shadow-sm focus:ring-2 focus:ring-[#3B82F6] transition-all ${isAr ? 'text-right' : 'text-left'}`}
                             />
                             <textarea 
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
+                                required
                                 placeholder={t.body}
                                 rows={4}
                                 className={`w-full px-6 py-4 rounded-[24px] border-none bg-white text-gray-900 placeholder-[#94A3B8] shadow-sm focus:ring-2 focus:ring-[#3B82F6] transition-all resize-none ${isAr ? 'text-right' : 'text-left'}`}
                             />
                             <button 
                                 type="submit"
-                                className="w-full py-4.5 py-4 rounded-[20px] bg-[#2563EB] text-white font-bold text-lg hover:bg-blue-700 active:scale-[0.98] transition-all shadow-lg shadow-blue-500/20"
+                                disabled={status === 'loading'}
+                                className={`w-full py-4.5 py-4 rounded-[20px] font-bold text-lg active:scale-[0.98] transition-all shadow-lg ${
+                                    status === 'loading' ? 'bg-gray-400 cursor-not-allowed' : 
+                                    status === 'success' ? 'bg-green-500 hover:bg-green-600' :
+                                    status === 'error' ? 'bg-red-500 hover:bg-red-600' :
+                                    'bg-[#2563EB] hover:bg-blue-700 shadow-blue-500/20'
+                                } text-white`}
                             >
-                                {t.submit}
+                                {status === 'loading' ? t.loading : 
+                                 status === 'success' ? t.success :
+                                 status === 'error' ? t.error :
+                                 t.submit}
                             </button>
                         </form>
                     </div>
@@ -109,3 +181,4 @@ function Contact({ currentLang }) {
 }
 
 export default Contact;
+
