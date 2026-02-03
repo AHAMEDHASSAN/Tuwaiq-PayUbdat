@@ -47,11 +47,11 @@ function Footer({ currentLang }) {
     const t = content[currentLang] || content.EN;
 
     const navLinks = [
-        { key: 'aboutUs', href: '#' },
-        { key: 'features', href: '#' },
-        { key: 'pricing', href: '#' },
-        { key: 'contact', href: '#' },
-        { key: 'terms', href: '#' },
+        { key: 'aboutUs', href: '/#about-us' },
+        { key: 'features', href: '/features' },
+        { key: 'pricing', href: '/#pricing' },
+        { key: 'contact', href: '/#contact' },
+        { key: 'terms', href: 'https://tuwaiqpay.com.sa/ar/terms-and-conditions' },
     ];
 
     return (
@@ -193,18 +193,24 @@ function Footer({ currentLang }) {
                         {/* Mobile Two Rows */}
                         <div className="flex xl:hidden flex-col space-y-4 w-full">
                             <nav className="flex items-center justify-center gap-x-8">
-                                {['aboutUs', 'features', 'pricing'].map((key) => (
-                                    <a key={key} href="#" className="text-gray-300 hover:text-white transition-colors text-[13px] font-medium">
-                                        {t[key]}
-                                    </a>
-                                ))}
+                                {['aboutUs', 'features', 'pricing'].map((key) => {
+                                    const link = navLinks.find(l => l.key === key);
+                                    return (
+                                        <a key={key} href={link?.href || '#'} className="text-gray-300 hover:text-white transition-colors text-[13px] font-medium">
+                                            {t[key]}
+                                        </a>
+                                    );
+                                })}
                             </nav>
                             <nav className="flex items-center justify-center gap-x-8">
-                                {['contact', 'terms'].map((key) => (
-                                    <a key={key} href="#" className="text-gray-300 hover:text-white transition-colors text-[13px] font-medium">
-                                        {t[key]}
-                                    </a>
-                                ))}
+                                {['contact', 'terms'].map((key) => {
+                                    const link = navLinks.find(l => l.key === key);
+                                    return (
+                                        <a key={key} href={link?.href || '#'} className="text-gray-300 hover:text-white transition-colors text-[13px] font-medium">
+                                            {t[key]}
+                                        </a>
+                                    );
+                                })}
                             </nav>
                         </div>
                         {/* Desktop Single Row */}

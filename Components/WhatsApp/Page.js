@@ -1,10 +1,10 @@
 "use client";
 
 
-const WhatsApp = ({ positionClass }) => {
+const WhatsApp = ({ positionClass = "" }) => {
     return (
         <a 
-            href="https://wa.me/your-number" // Replace with actual number
+            href="https://api.whatsapp.com/message/UY24PCKYYXXBN1?autoload=1&app_absent=0" 
             target="_blank" 
             rel="noopener noreferrer"
             className={`${positionClass || "fixed bottom-6 right-6"} z-[9999] flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-lg hover:bg-[#20ba59] transition-all duration-300 hover:scale-110 group cursor-pointer`}

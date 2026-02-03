@@ -1,7 +1,7 @@
 "use client";
 
 
-import WhatsApp from "../WhatsApp/Page";
+
 
 function AppFeaturesGrid({ currentLang }) {
   const isAr = currentLang === "AR";
@@ -197,7 +197,7 @@ function AppFeaturesGrid({ currentLang }) {
           })}
         </div>
       </div>
-      <WhatsApp positionClass="absolute bottom-6 right-6" />
+
     </section>
   );
 }

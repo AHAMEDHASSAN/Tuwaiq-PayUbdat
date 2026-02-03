@@ -33,7 +33,7 @@ function FeaturesContent() {
   };
 
   return (
-    <main>
+    <main className="pt-20">
       <Header
         currentLang={currentLang}
         onLanguageSwitch={handleLanguageChange}

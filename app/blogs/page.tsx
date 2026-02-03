@@ -268,7 +268,7 @@ function BlogsContent() {
   const isAr = currentLang === 'AR';
 
   return (
-    <main className="min-h-screen">
+    <main className="pt-20 min-h-screen">
       <Header currentLang={currentLang} onLanguageSwitch={handleLanguageChange} />
       
       {/* Blog Hero Section - Professional Dark Theme */}

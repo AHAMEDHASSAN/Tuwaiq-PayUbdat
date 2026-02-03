@@ -35,7 +35,7 @@ function HomeContent() {
   };
 
   return (
-    <main>
+    <main className="pt-20">
       <Header currentLang={currentLang} onLanguageSwitch={handleLanguageChange} />
       <Hero currentLang={currentLang} />
       <About currentLang={currentLang} />

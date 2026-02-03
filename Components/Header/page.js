@@ -119,7 +119,7 @@ function Header({ currentLang, onLanguageSwitch }) {
     };
 
     return (
-        <header className="w-full bg-white shadow-sm sticky top-0 z-50 font-sans transition-colors duration-300">
+        <header className="w-full bg-white shadow-sm fixed top-0 left-0 z-50 font-sans transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
                     
@@ -134,7 +134,7 @@ function Header({ currentLang, onLanguageSwitch }) {
                     </button>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden lg:flex space-x-8 rtl:space-x-reverse ml-10 rtl:ml-0 rtl:mr-10">
+                    <nav className="hidden lg:flex gap-8 ml-10 rtl:ml-0 rtl:mr-10">
                         {menuItems[currentLang].map((item, index) => (
                             item.href === '#' ? (
                                 <Link
