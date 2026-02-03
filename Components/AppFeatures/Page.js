@@ -86,20 +86,30 @@ function AppFeatures({ currentLang }) {
 
                     {/* Store Buttons */}
                     <div className={`flex flex-row justify-center ${isAr ? 'lg:justify-start' : 'lg:justify-start'} gap-3 w-full pt-4`}>
-                        <button className="flex-1 flex items-center justify-center gap-1.5 bg-black text-white px-2 py-2 rounded-[15px] md:rounded-[30px] border border-transparent transition-colors hover:bg-gray-900 group max-w-[180px] md:min-w-[180px]">
+                        <a 
+                            href="https://apps.apple.com/eg/app/tuwaiq-pay/id6745802564" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="flex-1 flex items-center justify-center gap-1.5 bg-black text-white px-2 py-2 rounded-[15px] md:rounded-[30px] border border-transparent transition-colors hover:bg-gray-900 group max-w-[180px] md:min-w-[180px]"
+                        >
                             <img src="/AppStore.png" alt="App Store" className="h-5 md:h-8 w-5 md:w-8 object-contain" />
                             <div className={`text-left leading-none ${isAr ? 'text-right' : 'text-left'}`}>
                                 <div className="text-[8px] md:text-[10px] text-white">{t.appStoreSub}</div>
                                 <div className="text-[14px] md:text-xl font-medium mt-0.5 tracking-tight md:tracking-wide">{t.appStoreTitle}</div>
                             </div>
-                        </button>
-                        <button className="flex-1 flex items-center justify-center gap-1.5 bg-black text-white px-2 py-2 rounded-[15px] md:rounded-[30px] border border-transparent transition-colors hover:bg-gray-900 group max-w-[180px] md:min-w-[180px]">
+                        </a>
+                        <a 
+                            href="https://play.google.com/store/apps/details?id=com.tuwaiq.tuwaiq_pay&pli=1" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="flex-1 flex items-center justify-center gap-1.5 bg-black text-white px-2 py-2 rounded-[15px] md:rounded-[30px] border border-transparent transition-colors hover:bg-gray-900 group max-w-[180px] md:min-w-[180px]"
+                        >
                             <img src="/GooglePlay.png" alt="Google Play" className="h-5 md:h-8 w-5 md:w-8 object-contain" />
                             <div className={`text-left leading-none ${isAr ? 'text-right' : 'text-left'}`}>
                                 <div className="text-[8px] md:text-[10px] text-white uppercase tracking-wider">{t.googlePlaySub}</div>
                                 <div className="text-[14px] md:text-xl font-medium mt-0.5 tracking-tight md:tracking-wide">{t.googlePlayTitle}</div>
                             </div>
-                        </button>
+                        </a>
                     </div>
                 </div>
 

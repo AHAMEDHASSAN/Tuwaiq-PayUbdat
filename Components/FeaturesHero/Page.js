@@ -90,8 +90,10 @@ function FeaturesHero({ currentLang }) {
           </div>
 
           <div className="flex flex-wrap gap-3 pt-4">
-            <button
-              type="button"
+            <a
+              href="https://apps.apple.com/eg/app/tuwaiq-pay/id6745802564"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-black text-white px-4 py-2 rounded-[14px] border border-gray-800 transition-all hover:bg-gray-900 w-[160px] lg:w-[180px]"
             >
               <img
@@ -107,9 +109,11 @@ function FeaturesHero({ currentLang }) {
                   {t.appStoreTitle}
                 </div>
               </div>
-            </button>
-            <button
-              type="button"
+            </a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.tuwaiq.tuwaiq_pay&pli=1"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-black text-white px-4 py-2 rounded-[14px] border border-gray-800 transition-all hover:bg-gray-900 w-[165px] lg:w-[190px]"
             >
               <img
@@ -125,7 +129,7 @@ function FeaturesHero({ currentLang }) {
                   {t.googlePlayTitle}
                 </div>
               </div>
-            </button>
+            </a>
           </div>
         </div>
 

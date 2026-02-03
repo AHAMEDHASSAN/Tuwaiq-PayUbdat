@@ -56,7 +56,12 @@ function AcceptPayments({ currentLang }) {
 
                         {/* Download Buttons */}
                         <div className={`flex flex-col md:flex-row items-center justify-center md:justify-start gap-3 md:gap-4 px-4 md:px-0`}>
-                            <button className="w-full md:w-auto flex items-center justify-center gap-3 bg-[#111827] text-white px-8 py-3.5 rounded-full hover:bg-black transition-all duration-300 active:scale-[0.98] shadow-lg shadow-black/5">
+                            <a 
+                                href="https://apps.apple.com/eg/app/tuwaiq-pay/id6745802564" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="w-full md:w-auto flex items-center justify-center gap-3 bg-[#111827] text-white px-8 py-3.5 rounded-full hover:bg-black transition-all duration-300 active:scale-[0.98] shadow-lg shadow-black/5"
+                            >
                                 <div className="w-8 h-8 flex items-center justify-center">
                                     <img src="/AppStore.png" alt="App Store" className="w-full h-full object-contain brightness-0 invert" />
                                 </div>
@@ -64,9 +69,14 @@ function AcceptPayments({ currentLang }) {
                                     <span className="text-[10px] text-gray-400 font-medium mb-0.5">{t.appStoreSub}</span>
                                     <span className="text-base font-semibold">{t.appStoreTitle}</span>
                                 </div>
-                            </button>
+                            </a>
 
-                            <button className="w-full md:w-auto flex items-center justify-center gap-3 bg-[#111827] text-white px-8 py-3.5 rounded-full hover:bg-black transition-all duration-300 active:scale-[0.98] shadow-lg shadow-black/5">
+                            <a 
+                                href="https://play.google.com/store/apps/details?id=com.tuwaiq.tuwaiq_pay&pli=1" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="w-full md:w-auto flex items-center justify-center gap-3 bg-[#111827] text-white px-8 py-3.5 rounded-full hover:bg-black transition-all duration-300 active:scale-[0.98] shadow-lg shadow-black/5"
+                            >
                                 <div className="w-8 h-8 flex items-center justify-center">
                                     <img src="/GooglePlay.png" alt="Google Play" className="w-full h-full object-contain" />
                                 </div>
@@ -74,7 +84,7 @@ function AcceptPayments({ currentLang }) {
                                     <span className="text-[10px] text-gray-400 font-medium mb-0.5 uppercase tracking-wider">{t.googlePlaySub}</span>
                                     <span className="text-base font-semibold">{t.googlePlayTitle}</span>
                                 </div>
-                            </button>
+                            </a>
                         </div>
                     </div>
 
@@ -94,7 +104,7 @@ function AcceptPayments({ currentLang }) {
                             <img 
                                 src="/PlaneThree.png" 
                                 alt="Tuwaiq Pay App Desktop" 
-                                className={`hidden md:block h-full w-auto object-contain z-10 ${isAr ? 'md:-scale-x-100' : ''} md:translate-y-[15%] md:h-[115%] md:w-auto`}
+                                className={`hidden md:block h-full w-auto object-contain z-10 md:translate-y-[15%] md:h-[115%] md:w-auto`}
                                 style={{ 
                                     filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.15))'
                                 }}

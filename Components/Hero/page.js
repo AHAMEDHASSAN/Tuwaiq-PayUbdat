@@ -39,20 +39,30 @@ function Hero({ currentLang }) {
                         </p>
 
                         <div className={`Buttons flex flex-row flex-wrap justify-center ${isAr ? 'lg:justify-start' : 'lg:justify-start'} gap-3 w-full`}>
-                            <button className="flex items-center justify-center gap-2 bg-black text-white px-2 py-1.5 rounded-[20px] lg:rounded-[30px] border border-transparent transition-colors group w-[160px] lg:w-[210px]">
+                            <a 
+                                href="https://apps.apple.com/eg/app/tuwaiq-pay/id6745802564" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-2 bg-black text-white px-2 py-1.5 rounded-[20px] lg:rounded-[30px] border border-transparent transition-colors group w-[160px] lg:w-[210px]"
+                            >
                                 <img src="/AppStore.png" alt="App Store" className="h-6 lg:h-8 w-6 lg:w-8 object-contain" />
                                 <div className={`text-left leading-none ${isAr ? 'text-right' : 'text-left'}`}>
                                     <div className="text-[9px] lg:text-[10px] text-white">{t.appStoreSub}</div>
                                     <div className="text-sm lg:text-xl font-medium mt-0.5 tracking-wide">{t.appStoreTitle}</div>
                                 </div>
-                            </button>
-                            <button className="flex items-center justify-center gap-2 bg-black text-white px-2 py-1.5 rounded-[20px] lg:rounded-[30px] border border-transparent transition-colors group w-[165px] lg:w-[220px]">
+                            </a>
+                            <a 
+                                href="https://play.google.com/store/apps/details?id=com.tuwaiq.tuwaiq_pay&pli=1" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-2 bg-black text-white px-2 py-1.5 rounded-[20px] lg:rounded-[30px] border border-transparent transition-colors group w-[165px] lg:w-[220px]"
+                            >
                                 <img src="/GooglePlay.png" alt="Google Play" className="h-6 lg:h-8 w-6 lg:w-8 object-contain" />
                                 <div className={`text-left leading-none ${isAr ? 'text-right' : 'text-left'}`}>
                                     <div className="text-[9px] lg:text-[10px] text-white uppercase tracking-wider">{t.googlePlaySub}</div>
                                     <div className="text-sm lg:text-xl font-medium mt-0.5 tracking-wide">{t.googlePlayTitle}</div>
                                 </div>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -74,7 +84,7 @@ function Hero({ currentLang }) {
                         <img 
                             src="/Hero.png" 
                             alt="App Screens" 
-                            className={`w-full h-auto lg:scale-145 transition-transform duration-500 ${isAr ? 'lg:-translate-x-12' : 'lg:translate-x-20'}`}
+                            className={`w-full h-auto lg:scale-145 transition-transform duration-500 ${isAr ? 'lg:translate-x-8' : 'lg:translate-x-20'}`}
                             style={{
                                 maskImage: `linear-gradient(${isAr ? 'to left' : 'to right'}, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 95%)`,
                                 WebkitMaskImage: `linear-gradient(${isAr ? 'to left' : 'to right'}, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 95%)`,
