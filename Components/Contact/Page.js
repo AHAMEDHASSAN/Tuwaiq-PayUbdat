@@ -47,7 +47,7 @@ function Contact({ currentLang }) {
         e.preventDefault();
         setStatus('loading');
 
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwEw9QpxCsJZmFrk5SxvVQ7BXu9wAQyo92_OANduU00NOwupJc-QTAdsM4TsVv3KdMX/exec';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwp5RyzSqUOYvHk32Z77_mc04_1PGMTph5420eyu9pKrOc3HuyGyGQI3_jBUZtNQzARNg/exec';
 
         try {
             // Sending as JSON string to match the user's old script logic (JSON.parse(e.postData.contents))

@@ -18,7 +18,7 @@ function doPost(e) {
     ]);
 
     var spreadsheetUrl = SpreadsheetApp.getActiveSpreadsheet().getUrl();
-    var myEmail = "ahmedhassan28111999iti@gmail.com";
+    var myEmail = "malqaysiah91@gmail.com";
     var emailSubject = "رسالة جديدة من عميل - Tuwaiq Pay"; // Removed emojis to avoid question marks
 
     // تصميم Premium مع Inline Styles لضمان الظهور في Gmail بشكل مثالي
