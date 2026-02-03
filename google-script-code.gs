@@ -9,12 +9,12 @@ function doPost(e) {
     // 1. Save data to Google Sheet
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     sheet.appendRow([
-      dateStr,
-      timeStr,
       data.fullName || "N/A",
       data.phone || "N/A",
       data.subject || "N/A",
-      data.message || "N/A"
+      data.message || "N/A",
+      timeStr,
+      dateStr
     ]);
 
     var spreadsheetUrl = SpreadsheetApp.getActiveSpreadsheet().getUrl();
