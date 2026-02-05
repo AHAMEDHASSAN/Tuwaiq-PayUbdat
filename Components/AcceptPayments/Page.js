@@ -26,9 +26,9 @@ function AcceptPayments({ currentLang }) {
 
     return (
         <section className="w-full bg-white py-12 md:py-20 overflow-hidden">
-            <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div 
-                    className="relative overflow-hidden rounded-[40px] px-8 md:px-16 lg:px-24 py-12 md:py-0 min-h-[450px] md:h-[520px] flex flex-col md:flex-row items-center justify-between gap-12"
+                    className="relative overflow-hidden rounded-[40px] px-8 md:px-16 lg:px-24 pt-6 pb-1 md:py-0 min-h-[315px] md:h-[365px] flex flex-col md:flex-row items-center justify-between gap-12"
                     style={{
                         background: 'linear-gradient(108.46deg, #E6EFFF 0%, #F5F8FF 51.56%, #E0EAFF 100%)',
                         border: '1px solid rgba(255, 255, 255, 0.6)'
@@ -44,7 +44,7 @@ function AcceptPayments({ currentLang }) {
                         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#3B82F6] opacity-[0.05] blur-[120px] rounded-full" />
                     </div>
                     {/* Left Side Content */}
-                    <div className={`flex-1 z-10 text-center md:text-left space-y-8 ${isAr ? 'md:text-right' : 'md:text-left'} order-1`}>
+                    <div className={`flex-1 z-10 text-center md:text-left space-y-6 ${isAr ? 'md:text-right' : 'md:text-left'} order-1`}>
                         <div className="space-y-4">
                             <h2 className="text-3xl md:text-2xl lg:text-[32px] font-bold text-[#0F172A] leading-tight tracking-tight">
                                 {t.title}
@@ -89,13 +89,13 @@ function AcceptPayments({ currentLang }) {
                     </div>
 
                     {/* Right Side Image */}
-                    <div className="flex-1 w-full relative h-auto flex items-end justify-center md:justify-end order-2 mt-0 md:mt-0">
-                        <div className="relative w-full flex items-end justify-center md:justify-end">
+                    <div className="flex-1 w-full relative h-auto flex items-start justify-center md:justify-end order-2 mt-4 md:mt-0">
+                        <div className="relative w-full flex items-start justify-center md:justify-end">
                             {/* Mobile Mockup Image */}
                             <img 
                                 src="/banner mockup 1.png" 
                                 alt="Tuwaiq Pay App Mobile" 
-                                className="block md:hidden w-[90%] h-auto object-contain z-10 translate-y-[50px]"
+                                className="block md:hidden w-[80%] h-auto object-contain z-10"
                                 style={{ 
                                     filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.15))'
                                 }}
@@ -104,7 +104,7 @@ function AcceptPayments({ currentLang }) {
                             <img 
                                 src="/PlaneThree.png" 
                                 alt="Tuwaiq Pay App Desktop" 
-                                className={`hidden md:block h-full w-auto object-contain z-10 md:translate-y-[15%] md:h-[115%] md:w-auto`}
+                                className={`hidden md:block h-full w-auto object-contain z-10 md:h-[100%] md:w-auto`}
                                 style={{ 
                                     filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.15))'
                                 }}

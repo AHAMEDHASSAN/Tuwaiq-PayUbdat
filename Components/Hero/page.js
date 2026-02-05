@@ -82,23 +82,23 @@ function Hero({ currentLang }) {
                     {/* Main Phone Image */}
                     <div className="relative z-10 w-full max-w-[500px] lg:max-w-none lg:w-[1400px]">
                         <img 
-                            src="/Hero.png" 
+                            src={isAr ? "/HeroArpic.png" : "/Hero.png"} 
                             alt="App Screens" 
-                            className={`w-full h-auto lg:scale-145 transition-transform duration-500 ${isAr ? 'lg:translate-x-8' : 'lg:translate-x-20'}`}
+                            className={`w-full h-auto ${isAr ? 'scale-90 lg:scale-90 lg:-translate-x-20 lg:-mt-16' : 'lg:scale-130 lg:translate-x-20 lg:-mt-4'} transition-transform duration-500`}
                             style={{
                                 maskImage: `linear-gradient(${isAr ? 'to left' : 'to right'}, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 95%)`,
                                 WebkitMaskImage: `linear-gradient(${isAr ? 'to left' : 'to right'}, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 95%)`,
                                 maskComposite: 'intersect',
                                 WebkitMaskComposite: 'source-in'
                             }}
-                        />
+                 />
+
                     </div>
                 </div>
 
             </div>
-
             {/* Desktop Only: Payment Partners - Absolute Positioned at Bottom of Section */}
-            <div className="hidden lg:block absolute bottom-8 w-full z-20">
+            <div className={`hidden lg:block absolute ${isAr ? 'bottom-24' : 'bottom-12'} w-full z-20`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center gap-12 md:gap-20">
                         <img src="/Made.png" alt="Mada" className="h-12 object-contain" />

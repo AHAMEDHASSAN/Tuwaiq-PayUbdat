@@ -1,6 +1,9 @@
-"use client";
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 function Footer({ currentLang }) {
+    const pathname = usePathname();
+    const router = useRouter();
+    const searchParams = useSearchParams();
     const isAr = currentLang === 'AR';
 
     const content = {
@@ -50,13 +53,51 @@ function Footer({ currentLang }) {
         { key: 'aboutUs', href: '/#about-us' },
         { key: 'features', href: '/features' },
         { key: 'pricing', href: '/#pricing' },
+        { key: 'faqs', href: '/faqs' },
         { key: 'contact', href: '/#contact' },
-        { key: 'terms', href: 'https://tuwaiqpay.com.sa/ar/terms-and-conditions' },
+        { key: 'terms', href: '/terms' },
     ];
+
+    const handleNavigation = (e, href) => {
+        // Handle normal hash links differently for smooth scroll
+        if (href.startsWith('/#')) {
+            e.preventDefault();
+            const targetId = href.split('#')[1];
+            
+            // If we're already on the home page, scroll smoothly
+            if (pathname === '/') {
+                const element = document.getElementById(targetId);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                    return;
+                }
+            }
+        }
+
+        // For other internal links, append the language if not present
+        if (!href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel')) {
+            e.preventDefault();
+            const [pathAndQuery, hash] = href.split('#');
+            const targetPath = pathAndQuery === '/' ? '/' : pathAndQuery;
+            
+            const params = new URLSearchParams(searchParams.toString());
+            params.set('lang', currentLang);
+            
+            const targetHref = `${targetPath}?${params.toString()}${hash ? '#' + hash : ''}`;
+            router.push(targetHref);
+            return;
+        }
+
+        // For absolute links (like external terms), let them work normally or open in new tab
+        if (href.startsWith('http')) {
+            e.preventDefault();
+            window.open(href, '_blank');
+        }
+    };
 
     return (
         <footer className={`w-full bg-black text-white overflow-hidden relative ${isAr ? 'font-sans' : ''}`} dir={isAr ? 'rtl' : 'ltr'}>
-            <div className="max-w-[1400px] mx-auto px-4 md:px-8 py-12 md:py-20 text-center xl:text-left">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 text-center xl:text-left">
                 {/* Reach Us & Follow Us Container */}
                 <div className="flex flex-col md:flex-row items-stretch justify-between gap-10 mb-16 md:mb-24 text-left rtl:text-right">
                     
@@ -192,33 +233,45 @@ function Footer({ currentLang }) {
                     <div className="flex flex-col xl:flex-row items-center gap-x-12 gap-y-4 order-3 xl:order-2">
                         {/* Mobile Two Rows */}
                         <div className="flex xl:hidden flex-col space-y-4 w-full">
-                            <nav className="flex items-center justify-center gap-x-8">
-                                {['aboutUs', 'features', 'pricing'].map((key) => {
-                                    const link = navLinks.find(l => l.key === key);
-                                    return (
-                                        <a key={key} href={link?.href || '#'} className="text-gray-300 hover:text-white transition-colors text-[13px] font-medium">
-                                            {t[key]}
-                                        </a>
-                                    );
-                                })}
-                            </nav>
-                            <nav className="flex items-center justify-center gap-x-8">
-                                {['contact', 'terms'].map((key) => {
-                                    const link = navLinks.find(l => l.key === key);
-                                    return (
-                                        <a key={key} href={link?.href || '#'} className="text-gray-300 hover:text-white transition-colors text-[13px] font-medium">
-                                            {t[key]}
-                                        </a>
-                                    );
-                                })}
-                            </nav>
+                                <nav className="flex items-center justify-center gap-x-8">
+                                    {['aboutUs', 'features', 'pricing', 'faqs'].map((key) => {
+                                        const link = navLinks.find(l => l.key === key);
+                                        return (
+                                            <button 
+                                                key={key} 
+                                                onClick={(e) => handleNavigation(e, link?.href || '#')}
+                                                className="bg-transparent border-0 p-0 text-gray-300 hover:text-white transition-colors text-[13px] font-medium cursor-pointer"
+                                            >
+                                                {t[key]}
+                                            </button>
+                                        );
+                                    })}
+                                </nav>
+                                <nav className="flex items-center justify-center gap-x-8">
+                                    {['contact', 'terms'].map((key) => {
+                                        const link = navLinks.find(l => l.key === key);
+                                        return (
+                                            <button 
+                                                key={key} 
+                                                onClick={(e) => handleNavigation(e, link?.href || '#')}
+                                                className="bg-transparent border-0 p-0 text-gray-300 hover:text-white transition-colors text-[13px] font-medium cursor-pointer"
+                                            >
+                                                {t[key]}
+                                            </button>
+                                        );
+                                    })}
+                                </nav>
                         </div>
                         {/* Desktop Single Row */}
                         <nav className="hidden xl:flex items-center gap-x-8">
                             {navLinks.map((link) => (
-                                <a key={link.key} href={link.href} className="text-white hover:text-gray-300 transition-colors text-sm font-medium whitespace-nowrap">
+                                <button 
+                                    key={link.key} 
+                                    onClick={(e) => handleNavigation(e, link.href)}
+                                    className="bg-transparent border-0 p-0 text-white hover:text-gray-300 transition-colors text-sm font-medium whitespace-nowrap cursor-pointer"
+                                >
                                     {t[link.key]}
-                                </a>
+                                </button>
                             ))}
                         </nav>
                     </div>

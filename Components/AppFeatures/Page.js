@@ -56,32 +56,109 @@ function AppFeatures({ currentLang }) {
     };
 
     return (
-        <section id="faqs" className={`w-full bg-[#007AFF] pt-16 pb-0 overflow-hidden ${isAr ? 'font-sans' : ''}`} dir={isAr ? 'rtl' : 'ltr'}>
-            <div className="max-w-[1728px] mx-auto px-4 md:px-[60px] lg:px-[120px] flex flex-col lg:flex-row items-center lg:items-center justify-between gap-12 pt-8 lg:pt-16">
+        <section id="faqs" className={`w-full bg-[#007AFF] pt-8 pb-0 overflow-hidden ${isAr ? 'font-sans' : ''}`} dir={isAr ? 'rtl' : 'ltr'}>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse lg:flex-row items-center lg:items-center justify-between gap-12 pt-4 lg:pt-8">
                 
                 {/* Left Side: Image */}
                 <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
                     <img 
                         src="PlaneTow.png" 
                         alt="Mobile App Interface" 
-                        className="w-full max-w-[600px] h-auto object-contain"
+                        className="w-full max-w-[130px] lg:max-w-[360px] h-auto object-contain"
                     />
                 </div>
 
                 {/* Right Side: Text & Content */}
-                <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start space-y-6 md:space-y-10 pb-16 lg:pb-0">
-                    <h2 className={`text-2xl md:text-5xl lg:text-5xl font-bold text-white leading-tight text-center ${isAr ? 'lg:text-right w-full' : 'lg:text-left'}`}>
-                        {t.title}
-                    </h2>
+                <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start space-y-6 md:space-y-10 pb-8 lg:pb-0">
+                    <div className="relative w-full">
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 via-blue-300/30 to-blue-400/20 blur-2xl rounded-3xl"></div>
+                        <h2 className={`relative text-[42px] md:text-5xl lg:text-[64px] font-bold bg-gradient-to-r from-[#D8BEFF] via-[#88DBFF] to-[#FFFFFF] bg-clip-text text-transparent leading-tight text-center ${isAr ? 'lg:text-right w-full' : 'lg:text-left'} px-4`}>
+                            {t.title}
+                        </h2>
+                    </div>
 
                     {/* Features Grid */}
-                    <div className="flex flex-wrap justify-center lg:justify-start gap-3 md:gap-4">
-                        {t.features.map((feature) => (
-                            <div key={feature.id} className="flex items-center gap-2 md:gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-[100px] px-4 py-2 md:px-5 md:py-3 transition-transform hover:scale-105">
-                                {renderIcon(feature.icon)}
-                                <span className="text-white font-medium text-[11px] md:text-base whitespace-nowrap">{feature.text}</span>
+                    <div className="w-full">
+                        {/* Mobile: Custom 2-1-2-2 Layout */}
+                        <div className="flex md:hidden flex-col gap-4 w-full">
+                            {/* Row 1: 2 items */}
+                            <div className="grid grid-cols-2 gap-4">
+                                {t.features.slice(0, 2).map((feature) => (
+                                    <div key={feature.id} className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-[100px] p-[10px] transition-transform hover:scale-105">
+                                        {renderIcon(feature.icon)}
+                                        <span className="text-white font-medium text-[13px] whitespace-nowrap">{feature.text}</span>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
+                            {/* Row 2: 1 item centered */}
+                            <div className="flex justify-center">
+                                <div className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-[100px] p-[10px] transition-transform hover:scale-105 w-[calc(50%-4px)]">
+                                    {renderIcon(t.features[2].icon)}
+                                    <span className="text-white font-medium text-[13px] whitespace-nowrap">{t.features[2].text}</span>
+                                </div>
+                            </div>
+                            {/* Row 3: 2 items */}
+                            <div className="grid grid-cols-2 gap-4">
+                                {t.features.slice(3, 5).map((feature) => (
+                                    <div key={feature.id} className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-[100px] p-[10px] transition-transform hover:scale-105">
+                                        {renderIcon(feature.icon)}
+                                        <span className="text-white font-medium text-[13px] whitespace-nowrap">{feature.text}</span>
+                                    </div>
+                                ))}
+                            </div>
+                            {/* Row 4: 2 items */}
+                            <div className="grid grid-cols-2 gap-4">
+                                {t.features.slice(5, 7).map((feature) => (
+                                    <div key={feature.id} className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-[100px] p-[10px] transition-transform hover:scale-105">
+                                        {renderIcon(feature.icon)}
+                                        <span className="text-white font-medium text-[13px] whitespace-nowrap">{feature.text}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        {/* Desktop: Custom 3-2-2 Layout for large screens, Flex wrap for medium */}
+                        <div className="hidden md:flex flex-wrap lg:grid lg:grid-cols-1 gap-4 w-full">
+                            {/* lg View: 3-2-2 */}
+                            <div className="hidden lg:flex flex-col gap-4 w-full">
+                                {/* Row 1: 3 items */}
+                                <div className="flex gap-4">
+                                    {t.features.slice(0, 3).map((feature) => (
+                                        <div key={feature.id} className="flex items-center justify-start gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-[100px] px-5 py-3 transition-transform hover:scale-105">
+                                            {renderIcon(feature.icon)}
+                                            <span className="text-white font-medium text-base whitespace-nowrap">{feature.text}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                                {/* Row 2: 2 items */}
+                                <div className="flex gap-4">
+                                    {t.features.slice(3, 5).map((feature) => (
+                                        <div key={feature.id} className="flex items-center justify-start gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-[100px] px-5 py-3 transition-transform hover:scale-105">
+                                            {renderIcon(feature.icon)}
+                                            <span className="text-white font-medium text-base whitespace-nowrap">{feature.text}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                                {/* Row 3: 2 items */}
+                                <div className="flex gap-4">
+                                    {t.features.slice(5, 7).map((feature) => (
+                                        <div key={feature.id} className="flex items-center justify-start gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-[100px] px-5 py-3 transition-transform hover:scale-105">
+                                            {renderIcon(feature.icon)}
+                                            <span className="text-white font-medium text-base whitespace-nowrap">{feature.text}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* md View: Flex wrap (preserving original behavior for medium screens) */}
+                            <div className="flex lg:hidden flex-wrap justify-center gap-4">
+                                {t.features.map((feature) => (
+                                    <div key={feature.id} className="flex items-center justify-start gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-[100px] px-5 py-3 transition-transform hover:scale-105">
+                                        {renderIcon(feature.icon)}
+                                        <span className="text-white font-medium text-base whitespace-nowrap">{feature.text}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
 
                     {/* Store Buttons */}

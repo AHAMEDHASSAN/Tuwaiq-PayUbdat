@@ -23,7 +23,7 @@ function Header({ currentLang, onLanguageSwitch }) {
             { name: 'Home', href: '/' },
             { name: 'About us', href: '/#about-us' },
             { name: 'Features', href: '/features' },
-            { name: 'FAQs', href: '/#faqs' },
+            { name: 'FAQs', href: '/faqs' },
             { name: 'Blogs', href: '/blogs' },
             { name: 'Pricing', href: '/#pricing' },
             { name: 'Contact', href: '/#contact' }
@@ -32,7 +32,7 @@ function Header({ currentLang, onLanguageSwitch }) {
             { name: 'الرئيسية', href: '/' },
             { name: 'من نحن', href: '/#about-us' },
             { name: 'المميزات', href: '/features' },
-            { name: 'الأسئلة الشائعة', href: '/#faqs' },
+            { name: 'الأسئلة الشائعة', href: '/faqs' },
             { name: 'المدونة', href: '/blogs' },
             { name: 'الأسعار', href: '/#pricing' },
             { name: 'اتصل بنا', href: '/#contact' }
@@ -75,8 +75,8 @@ function Header({ currentLang, onLanguageSwitch }) {
         setIsLangMenuOpen(false);
     };
 
-    const items = menuItems[currentLang];
-    const activeIndex = items.findIndex((item) => item.href !== '#' && pathname === item.href);
+    const items = menuItems[currentLang] || menuItems.AR || [];
+    const activeIndex = items.findIndex ? items.findIndex((item) => item.href !== '#' && pathname === item.href) : -1;
     const resolvedActiveIndex = activeIndex >= 0 ? activeIndex : 0;
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -87,8 +87,9 @@ function Header({ currentLang, onLanguageSwitch }) {
         // Append current language to internal URLs
         let targetHref = href;
         if (!href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel')) {
-            const separator = href.includes('?') ? '&' : '?';
-            targetHref = `${href}${separator}lang=${currentLang}`;
+            const [pathAndQuery, hash] = href.split('#');
+            const separator = pathAndQuery.includes('?') ? '&' : '?';
+            targetHref = `${pathAndQuery}${separator}lang=${currentLang}${hash ? '#' + hash : ''}`;
         }
 
         // Handle external links

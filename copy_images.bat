@@ -1,0 +1,2 @@
+copy /Y "C:\Users\Win 10 Pro\.gemini\antigravity\brain\2302b6f6-7487-49e2-9af3-54ed528d3737\hero_arpic_phone_1770297565618.png" "d:\ProjectClinetUbdate\ProjectClinetUbdate\my-app\public\HeroArpic_Phone.png"
+copy /Y "C:\Users\Win 10 Pro\.gemini\antigravity\brain\2302b6f6-7487-49e2-9af3-54ed528d3737\hero_arpic_notif_1770297659687.png" "d:\ProjectClinetUbdate\ProjectClinetUbdate\my-app\public\HeroArpic_Notif.png"
