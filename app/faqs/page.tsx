@@ -9,11 +9,13 @@ function FAQsContent() {
   const searchParams = useSearchParams();
   const [currentLang, setCurrentLang] = useState("EN");
 
-  // Initial language sync from URL
+  // Initial language sync from URL or default
   useEffect(() => {
     const lang = searchParams.get('lang');
     if (lang === 'AR' || lang === 'EN') {
       handleLanguageChange(lang);
+    } else {
+      handleLanguageChange("EN"); // Default to English
     }
   }, [searchParams]);
 
