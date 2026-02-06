@@ -125,7 +125,7 @@ function Plans({ currentLang }) {
     const t = content[currentLang] || content.EN;
 
     return (
-        <section id="pricing" className={`w-full bg-white py-16 lg:py-24 ${isAr ? 'font-sans' : ''}`} dir={isAr ? 'rtl' : 'ltr'}>
+        <section id="pricing" className={`w-full bg-white py-16 lg:py-24 scroll-mt-24 ${isAr ? 'font-sans' : ''}`} dir={isAr ? 'rtl' : 'ltr'}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 {/* Header Section */}

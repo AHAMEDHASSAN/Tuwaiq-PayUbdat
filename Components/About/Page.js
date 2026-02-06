@@ -73,7 +73,7 @@ function About({ currentLang }) {
     };
 
     return (
-        <section id="about-us" className={`w-full py-12 lg:py-24 mt-[50px] overflow-hidden bg-white ${isAr ? 'font-sans' : ''}`} dir={isAr ? 'rtl' : 'ltr'}>
+        <section id="about-us" className={`w-full py-12 lg:py-24 mt-[50px] scroll-mt-24 overflow-hidden bg-white ${isAr ? 'font-sans' : ''}`} dir={isAr ? 'rtl' : 'ltr'}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 {/* Mobile Specific Header: Title at Top */}

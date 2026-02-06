@@ -2,12 +2,14 @@
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import DownloadModal from '../DownloadModal/Page';
 
 function Header({ currentLang, onLanguageSwitch }) {
     const pathname = usePathname();
     const router = useRouter();
     const searchParams = useSearchParams();
     const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+    const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
     
     // Sync language from URL on mount
     useEffect(() => {
@@ -192,7 +194,10 @@ function Header({ currentLang, onLanguageSwitch }) {
                         </div>
 
                         {/* Get App Button */}
-                        <button className="bg-blue-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-blue-700 transition-all duration-200 shadow-md hover:shadow-lg text-sm">
+                        <button 
+                            onClick={() => setIsDownloadModalOpen(true)}
+                            className="bg-blue-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-blue-700 transition-all duration-200 shadow-md hover:shadow-lg text-sm"
+                        >
                             {currentLang === 'EN' ? 'Get App' : 'حمل التطبيق'}
                         </button>
                     </div>
@@ -258,13 +263,26 @@ function Header({ currentLang, onLanguageSwitch }) {
                             </button>
                         </div>
                         <div className="px-5">
-                            <button className="w-full bg-blue-600 text-white px-6 py-3.5 rounded-full font-bold hover:bg-blue-700 transition-all duration-200 shadow-lg text-base">
+                            <button 
+                                onClick={() => {
+                                    setIsDownloadModalOpen(true);
+                                    setIsMobileMenuOpen(false);
+                                }}
+                                className="w-full bg-blue-600 text-white px-6 py-3.5 rounded-full font-bold hover:bg-blue-700 transition-all duration-200 shadow-lg text-base"
+                            >
                                 {currentLang === 'EN' ? 'Get App' : 'حمل التطبيق'}
                             </button>
                         </div>
                     </div>
                 </div>
             )}
+
+            {/* Download Modal */}
+            <DownloadModal 
+                isOpen={isDownloadModalOpen} 
+                onClose={() => setIsDownloadModalOpen(false)} 
+                currentLang={currentLang}
+            />
         </header>
     );
 }

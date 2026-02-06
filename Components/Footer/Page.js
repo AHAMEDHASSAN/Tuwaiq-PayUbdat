@@ -20,7 +20,7 @@ function Footer({ currentLang }) {
             pricing: "Pricing",
             contact: "Contact",
             terms: "Terms and condition",
-            copyright: "© 2025 TuwaiqPay. All rights reserved",
+            copyright: "© 2026 TuwaiqPay. All rights reserved",
             appStoreSub: "Download on the",
             appStoreTitle: "App Store",
             googlePlaySub: "GET IT ON",

@@ -72,7 +72,7 @@ function Contact({ currentLang }) {
     };
 
     return (
-        <section id="contact" className={`w-full bg-white py-12 md:py-20 overflow-hidden ${isAr ? 'font-sans' : ''}`} dir={isAr ? 'rtl' : 'ltr'}>
+        <section id="contact" className={`w-full bg-white py-12 md:py-20 scroll-mt-24 overflow-hidden ${isAr ? 'font-sans' : ''}`} dir={isAr ? 'rtl' : 'ltr'}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div 
                     className="relative overflow-hidden rounded-[40px] px-8 md:px-16 lg:px-24 py-12 md:py-0 min-h-[500px] md:h-[580px] flex flex-col lg:flex-row items-center justify-between gap-12"
