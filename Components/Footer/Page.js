@@ -18,6 +18,8 @@ function Footer({ currentLang }) {
             aboutUs: "About us",
             features: "Features",
             pricing: "Pricing",
+            faqs: "FAQs",
+            blogs: "Blogs",
             contact: "Contact",
             terms: "Terms and condition",
             copyright: "© 2026 TuwaiqPay. All rights reserved",
@@ -37,6 +39,8 @@ function Footer({ currentLang }) {
             aboutUs: "من نحن",
             features: "المميزات",
             pricing: "الأسعار",
+            faqs: "الأسئلة الشائعة",
+            blogs: "المدونة",
             contact: "اتصل بنا",
             terms: "الشروط والأحكام",
             copyright: "© 2025 طويق باي. جميع الحقوق محفوظة",
@@ -54,17 +58,37 @@ function Footer({ currentLang }) {
         { key: 'features', href: '/features' },
         { key: 'pricing', href: '/#pricing' },
         { key: 'faqs', href: '/faqs' },
+        { key: 'blogs', href: '/blogs' },
         { key: 'contact', href: '/#contact' },
         { key: 'terms', href: '/terms' },
     ];
 
     const handleNavigation = (e, href) => {
-        // Handle normal hash links differently for smooth scroll
-        if (href.startsWith('/#')) {
-            e.preventDefault();
-            const targetId = href.split('#')[1];
+        e.preventDefault();
+        
+        // Append current language to internal URLs
+        let targetHref = href;
+        if (!href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel')) {
+            const [pathAndQuery, hash] = href.split('#');
+            const targetPath = pathAndQuery === '/' ? '/' : pathAndQuery;
             
-            // If we're already on the home page, scroll smoothly
+            const params = new URLSearchParams(searchParams.toString());
+            params.set('lang', currentLang);
+            
+            targetHref = `${targetPath}?${params.toString()}${hash ? '#' + hash : ''}`;
+        }
+
+        // Handle external links
+        if (href.startsWith('http')) {
+            window.open(href, '_blank');
+            return;
+        }
+
+        // Handle hash links for smooth scrolling
+        if (href.includes('/#')) {
+            const targetId = href.split('/#')[1] || href.split('#')[1];
+            
+            // If we are on the home page
             if (pathname === '/') {
                 const element = document.getElementById(targetId);
                 if (element) {
@@ -74,25 +98,8 @@ function Footer({ currentLang }) {
             }
         }
 
-        // For other internal links, append the language if not present
-        if (!href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel')) {
-            e.preventDefault();
-            const [pathAndQuery, hash] = href.split('#');
-            const targetPath = pathAndQuery === '/' ? '/' : pathAndQuery;
-            
-            const params = new URLSearchParams(searchParams.toString());
-            params.set('lang', currentLang);
-            
-            const targetHref = `${targetPath}?${params.toString()}${hash ? '#' + hash : ''}`;
-            router.push(targetHref);
-            return;
-        }
-
-        // For absolute links (like external terms), let them work normally or open in new tab
-        if (href.startsWith('http')) {
-            e.preventDefault();
-            window.open(href, '_blank');
-        }
+        // Default navigation for other cases or different pages
+        router.push(targetHref);
     };
 
     return (
@@ -233,7 +240,7 @@ function Footer({ currentLang }) {
                     <div className="flex flex-col xl:flex-row items-center gap-x-12 gap-y-4 order-3 xl:order-2">
                         {/* Mobile Two Rows */}
                         <div className="flex xl:hidden flex-col space-y-4 w-full">
-                                <nav className="flex items-center justify-center gap-x-8">
+                                <nav className="flex items-center justify-center gap-x-6 flex-wrap">
                                     {['aboutUs', 'features', 'pricing', 'faqs'].map((key) => {
                                         const link = navLinks.find(l => l.key === key);
                                         return (
@@ -247,8 +254,8 @@ function Footer({ currentLang }) {
                                         );
                                     })}
                                 </nav>
-                                <nav className="flex items-center justify-center gap-x-8">
-                                    {['contact', 'terms'].map((key) => {
+                                <nav className="flex items-center justify-center gap-x-6 flex-wrap">
+                                    {['blogs', 'contact', 'terms'].map((key) => {
                                         const link = navLinks.find(l => l.key === key);
                                         return (
                                             <button 
