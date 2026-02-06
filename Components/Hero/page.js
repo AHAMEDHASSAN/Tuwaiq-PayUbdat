@@ -5,7 +5,7 @@ function Hero({ currentLang }) {
     
     const content = {
         EN: {
-            title: <>Get Paid Faster, Collect <br className="hidden lg:block" /> Your Sales, and Grow Your <br className="hidden lg:block" /> Business with Tuwaiq Pay</>,
+            title: <>Get Paid Faster, Collect <br /> Your Sales, and Grow Your <br /> Business with Tuwaiq Pay</>,
             desc: <>Tuwaiq Pay enables freelancers and businesses in Saudi Arabia create bills, <br className="hidden lg:block" /> accept payments, and track every transaction — Digitally and securely</>,
             appStoreSub: "Download on the",
             googlePlaySub: "GET IT ON",
@@ -13,7 +13,7 @@ function Hero({ currentLang }) {
             googlePlayTitle: "Google Play"
         },
         AR: {
-            title: <>احصل على مستحقاتك، <br className="hidden lg:block" /> وزد مبيعاتك ونمِ أعمالك <br className="hidden lg:block" /> مع طويق باي</>,
+            title: <>احصل على مستحقاتك، <br /> وزد مبيعاتك ونمِ أعمالك <br /> مع طويق باي</>,
             desc: <>طويق باي تمكن المستقلين والشركات في المملكة العربية السعودية من إنشاء الفواتير، <br className="hidden lg:block" /> قبول المدفوعات، وتتبع كل معاملة — رقمياً وبكل أمان</>,
             appStoreSub: "حمل من",
             googlePlaySub: "احصل عليه من",
@@ -24,14 +24,16 @@ function Hero({ currentLang }) {
 
     const t = content[currentLang] || content.EN;
 
+    const isArFont = isAr ? 'font-sans' : '';
+
     return (
-        <section className={`w-full bg-gray-100 min-h-[calc(100vh-80px)] flex items-center overflow-hidden py-8 lg:py-12 relative ${isAr ? 'font-sans' : ''}`} dir={isAr ? 'rtl' : 'ltr'}>
+        <section className={`w-full bg-gray-100 min-h-[calc(100vh-80px)] flex items-center overflow-hidden py-8 lg:py-12 relative ${isArFont}`} dir={isAr ? 'rtl' : 'ltr'}>
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 w-full h-full">
                 
                 {/* Left Column: Text & Buttons */}
                 <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start space-y-6 lg:space-y-8 z-10 pb-4 lg:pb-20">
                     <div className="Title space-y-4 lg:space-y-6 flex flex-col items-center lg:items-start">
-                        <h1 className={`text-3xl md:text-5xl lg:text-[3rem] font-bold text-gray-900 leading-[1.2] lg:leading-[1.15] tracking-tight mt-6 lg:mt-10 text-center ${isAr ? 'lg:text-right' : 'lg:text-left'}`}>
+                        <h1 className={`text-[1.75rem] md:text-5xl lg:text-[3rem] font-bold text-gray-900 leading-[1.2] lg:leading-[1.15] tracking-tight mt-6 lg:mt-10 text-center lg:text-balance ${isAr ? 'lg:text-right' : 'lg:text-left'}`}>
                             {t.title}
                         </h1>
                         <p className={`text-[13px] lg:text-[15px] text-gray-500 leading-relaxed max-w-xl text-center ${isAr ? 'lg:text-right' : 'lg:text-left'} px-2 lg:px-0`}>
