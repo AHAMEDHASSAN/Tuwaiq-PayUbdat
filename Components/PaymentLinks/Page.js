@@ -23,7 +23,7 @@ function PaymentLinks({ currentLang }) {
   return (
     <section className="w-full bg-white py-8 lg:py-12 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex flex-col lg:flex-row lg:items-stretch gap-12 lg:gap-20 ${isAr ? 'lg:flex-row-reverse' : ''}`}>
+        <div className="flex flex-col lg:flex-row lg:items-stretch gap-12 lg:gap-20">
           
           {/* Left Side: Phone Image with Gradient Background */}
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
@@ -35,9 +35,13 @@ function PaymentLinks({ currentLang }) {
               }}
             >
               <img 
-                src="/PhonFeatures.png" 
+                src={isAr ? "/SecintArbic6.png" : "/PhonFeatures.png"} 
                 alt="Payment Links Interface" 
                 className="h-[125%] lg:h-[135%] w-auto object-contain z-10"
+                style={{
+                  clipPath: isAr ? 'inset(1px)' : 'none',
+                  transform: isAr ? 'scale(1.01)' : 'none'
+                }}
               />
             </div>
           </div>
@@ -45,8 +49,8 @@ function PaymentLinks({ currentLang }) {
           {/* Right Side: Text & Content */}
           <div className="w-full lg:w-1/2 flex flex-col justify-between items-center lg:items-start z-10 py-2">
             <div className="space-y-4 md:space-y-6 w-full">
-              <div className="flex items-center gap-2 group cursor-pointer w-full justify-center lg:justify-start">
-                <h2 className="text-xl lg:text-2xl font-bold text-blue-600">
+              <div className={`flex items-center gap-2 group cursor-pointer w-full justify-center ${isAr ? 'lg:justify-end' : 'lg:justify-start'}`}>
+                <h2 className={`text-xl lg:text-2xl font-bold text-blue-600 ${isAr ? 'lg:text-right' : 'lg:text-left'}`}>
                   {t.title}
                 </h2>
                 <span className="text-blue-500 text-xl lg:text-2xl font-light transform transition-transform group-hover:translate-x-1" aria-hidden="true">
@@ -54,15 +58,15 @@ function PaymentLinks({ currentLang }) {
                 </span>
               </div>
 
-              <h3 className="text-xl lg:text-4xl font-bold text-gray-900 leading-tight text-center lg:text-left">
+              <h3 className={`text-xl lg:text-4xl font-bold text-gray-900 leading-tight text-center ${isAr ? 'lg:text-right' : 'lg:text-left'}`}>
                 {t.subtitle}
               </h3>
 
-              <p className="text-gray-500 text-sm lg:text-lg leading-relaxed text-center lg:text-left max-w-xl mt-6 lg:mt-10">
+              <p className={`text-gray-500 text-sm lg:text-lg leading-relaxed text-center ${isAr ? 'lg:text-right' : 'lg:text-left'} max-w-xl mt-6 lg:mt-10`}>
                 {t.description}
               </p>
 
-              <p className="text-gray-600 font-medium text-sm lg:text-base text-center lg:text-left mt-8 lg:mt-16">
+              <p className={`text-gray-600 font-medium text-sm lg:text-base text-center ${isAr ? 'lg:text-right' : 'lg:text-left'} mt-8 lg:mt-16`}>
                 {t.tip}
               </p>
             </div>

@@ -89,13 +89,18 @@ function About({ currentLang }) {
                     <div className="w-full lg:w-1/2 relative flex justify-center items-start order-1 lg:order-2 lg:-mt-16">
                         
                         <div className="relative z-10 w-[240px] sm:w-[280px] md:w-[345px] flex items-center justify-center">
-                            {/* Purple Blob Background */}
+                            {/* Purple Blob Background - Kept outside cropping to bleed out */}
                             <div className="absolute bottom-[-1px] lg:bottom-[92px] left-1/2 -translate-x-1/2 w-[125%] lg:w-[130%] h-[95%] lg:h-[95%] bg-gradient-to-t from-[#E9D5FF] to-transparent rounded-[3rem] z-0"></div>
                             
+                            {/* Image Cropping Wrapper */}
                             <img 
-                                src="/iPhone 14 Pro.png" 
+                                src={isAr ? "/SecintArbic.png" : "/iPhone 14 Pro.png"} 
                                 alt="Tuwaiq Pay App Interface" 
                                 className="w-full h-auto md:w-[345px] md:h-[710px] md:object-contain drop-shadow-2xl relative z-10"
+                                style={{
+                                    clipPath: isAr ? 'inset(1px)' : 'none',
+                                    transform: isAr ? 'scale(1.01)' : 'none'
+                                }}
                             />
                         </div>
                     </div>

@@ -56,7 +56,23 @@ function Business({ currentLang }) {
                     bg: "bg-[#E0F2FE]",
                     span: "md:col-span-4"
                 }
-            ]
+            ],
+            mockups: {
+                balanceLabel: "Available balance",
+                transferLabel: "Transfer Amount",
+                scheduledLabel: "Scheduled On",
+                scheduledDate: "15 March 2027",
+                managerLabel: "Store Manager",
+                activeLabel: "Active",
+                paymentLinkLabel: "Payment Link",
+                tapToPayLabel: "Tap to Pay",
+                ecommerceLabel: "E-Commerce",
+                requestType: "Request Type : Complaint",
+                requestCategory: "Request category : Login issue",
+                supportGreeting: "Hello, Faisal",
+                supportMessage: "Your request has been submitted successfully. This is an automated message.",
+                supportTime: "02/09/2024 - 12:32 PM"
+            }
         },
         AR: {
             header: "خطط مرنة تناسب جميع أحجام الأعمال",
@@ -66,7 +82,7 @@ function Business({ currentLang }) {
                     id: 1,
                     title: "إعداد حساب سريع عبر الإنترنت",
                     desc: "سجل وفعل حسابك بالكامل عبر الإنترنت - بدون معاملات ورقية أو تأخير.",
-                    img: "/Plane2.png",
+                    img: "/SecintArbic1.png",
                     bg: "bg-[#DEE7FF]",
                     span: "md:col-span-12 lg:col-span-5"
                 },
@@ -110,7 +126,23 @@ function Business({ currentLang }) {
                     bg: "bg-[#E0F2FE]",
                     span: "md:col-span-4"
                 }
-            ]
+            ],
+            mockups: {
+                balanceLabel: "الرصيد المتاح",
+                transferLabel: "مبلغ التحويل",
+                scheduledLabel: "تاريخ الجدولة",
+                scheduledDate: "15 مارس 2027",
+                managerLabel: "مدير المتجر",
+                activeLabel: "نشط",
+                paymentLinkLabel: "رابط دفع",
+                tapToPayLabel: "نقاط البيع",
+                ecommerceLabel: "المتاجر الإلكترونية",
+                requestType: "نوع الطلب : شكوى",
+                requestCategory: "فئة الطلب : مشكلة في تسجيل الدخول",
+                supportGreeting: "أهلاً، فيصل",
+                supportMessage: "تم تقديم طلبك بنجاح. هذه رسالة تلقائية.",
+                supportTime: "02/09/2024 - 12:32 مساءً"
+            }
         }
     };
 
@@ -140,7 +172,16 @@ function Business({ currentLang }) {
                             <p className="text-gray-500 leading-relaxed max-w-[320px] mx-auto lg:mx-0 text-[15px]">{t.cards[0].desc}</p>
                         </div>
                         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] sm:w-[42%] lg:w-[55%] -mb-4">
-                            <img src={t.cards[0].img} alt={t.cards[0].title} className="w-full h-auto drop-shadow-2xl" />
+                            <img 
+                                src={t.cards[0].img} 
+                                alt={t.cards[0].title} 
+                                className="w-full h-auto drop-shadow-2xl" 
+                                style={{
+                                    clipPath: isAr ? 'inset(1px 1px 0 1px)' : 'none',
+                                    transform: isAr ? 'scale(1.01)' : 'none',
+                                    transformOrigin: 'bottom'
+                                }}
+                            />
                         </div>
                     </div>
 
@@ -181,20 +222,21 @@ function Business({ currentLang }) {
                         {/* Balance Card UI */}
                         <div className="mt-auto bg-white rounded-2xl p-4 shadow-lg border border-gray-100/50 flex flex-col gap-3 transform -translate-y-4">
                              <div className="space-y-1">
-                                <span className="text-[10px] text-gray-400 font-medium lowercase tracking-tight">Available balance</span>
-                                <div className="flex items-center gap-2">
-                                    <span className="text-2xl font-black text-gray-900">₪ 120,500</span>
+                                <span className="text-[10px] text-gray-400 font-medium lowercase tracking-tight">{t.mockups.balanceLabel}</span>
+                                <div className={`flex items-center gap-2 ${isAr ? 'flex-row-reverse justify-end' : ''}`}>
+                                    <span className="text-2xl font-black text-gray-900">120,500</span>
+                                    <span className="text-2xl font-black text-gray-900">{isAr ? 'ريال' : 'SAR'}</span>
                                 </div>
                              </div>
                              <div className="h-[1px] bg-gray-100 w-full border-dashed border-t"></div>
                              <div className="flex justify-between items-end">
                                 <div className="space-y-0.5">
-                                    <span className="text-[9px] text-gray-400 block">Transfer Amount</span>
-                                    <span className="text-xs font-bold text-gray-900">₪ 110,000.00</span>
+                                    <span className="text-[9px] text-gray-400 block">{t.mockups.transferLabel}</span>
+                                    <span className="text-xs font-bold text-gray-900">{isAr ? '110,000.00 ريال' : 'SAR 110,000.00'}</span>
                                 </div>
                                 <div className="space-y-0.5 text-right">
-                                    <span className="text-[9px] text-gray-400 block">Scheduled On</span>
-                                    <span className="text-xs font-bold text-gray-900">15 March 2027</span>
+                                    <span className="text-[9px] text-gray-400 block">{t.mockups.scheduledLabel}</span>
+                                    <span className="text-xs font-bold text-gray-900">{t.mockups.scheduledDate}</span>
                                 </div>
                              </div>
                         </div>
@@ -213,10 +255,10 @@ function Business({ currentLang }) {
                             
                             {/* Nested UI List */}
                             <div className="absolute top-2 left-1/2 -translate-x-1/2 w-[90%] bg-white rounded-xl p-3 shadow-xl border border-gray-100 flex flex-col gap-2">
-                                <div className="flex items-center justify-between border-b border-gray-50 pb-2">
-                                    <div className="flex flex-col">
-                                        <span className="font-bold text-[11px] text-gray-900">Store Manager</span>
-                                        <div className="flex items-center gap-1">
+                                <div className={`flex items-center justify-between border-b border-gray-50 pb-2 ${isAr ? 'flex-row-reverse' : ''}`}>
+                                    <div className={`flex flex-col ${isAr ? 'items-end' : ''}`}>
+                                        <span className="font-bold text-[11px] text-gray-900">{t.mockups.managerLabel}</span>
+                                        <div className={`flex items-center gap-1 ${isAr ? 'flex-row-reverse' : ''}`}>
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-[8px] w-[8px] text-gray-400" viewBox="0 0 20 20" fill="currentColor">
                                                 <path fillRule="evenodd" d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zm3 1a1 1 0 100 2 1 1 0 000-2zM8 4a1 1 0 112 0 1 1 0 01-2 0z" clipRule="evenodd" />
                                             </svg>
@@ -224,24 +266,24 @@ function Business({ currentLang }) {
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <span className="text-[8px] text-green-500 bg-green-50 px-1.5 py-0.5 rounded-full font-bold">Active</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-2.5 w-2.5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <span className="text-[8px] text-green-500 bg-green-50 px-1.5 py-0.5 rounded-full font-bold">{t.mockups.activeLabel}</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" className={`h-2.5 w-2.5 text-gray-300 ${isAr ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
                                         </svg>
                                     </div>
                                 </div>
-                                <div className="flex justify-between items-center px-1">
-                                    <div className="flex items-center gap-1 grayscale opacity-70 scale-90 origin-left">
+                                <div className={`flex justify-between items-center px-1 ${isAr ? 'flex-row-reverse' : ''}`}>
+                                    <div className={`flex items-center gap-1 grayscale opacity-70 scale-90 ${isAr ? 'flex-row-reverse origin-right' : 'origin-left'}`}>
                                         <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
-                                        <span className="text-[8px] font-bold text-gray-600">Payment Link</span>
+                                        <span className="text-[8px] font-bold text-gray-600">{t.mockups.paymentLinkLabel}</span>
                                     </div>
-                                    <div className="flex items-center gap-1 scale-90">
+                                    <div className={`flex items-center gap-1 scale-90 ${isAr ? 'flex-row-reverse' : ''}`}>
                                         <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
-                                        <span className="text-[8px] font-bold text-gray-600">Tap to Pay</span>
+                                        <span className="text-[8px] font-bold text-gray-600">{t.mockups.tapToPayLabel}</span>
                                     </div>
-                                    <div className="flex items-center gap-1 scale-90 origin-right">
+                                    <div className={`flex items-center gap-1 scale-90 ${isAr ? 'flex-row-reverse origin-left' : 'origin-right'}`}>
                                         <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
-                                        <span className="text-[8px] font-bold text-gray-600">E-Commerce</span>
+                                        <span className="text-[8px] font-bold text-gray-600">{t.mockups.ecommerceLabel}</span>
                                     </div>
                                 </div>
                             </div>
@@ -263,33 +305,33 @@ function Business({ currentLang }) {
                         <div className="mt-auto flex flex-col gap-2 -mb-2 relative transform -translate-y-8">
                             {/* Blurred Background Card */}
                             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-3 border border-gray-100 flex flex-col gap-1.5 opacity-40 scale-95 origin-bottom translate-y-2">
-                                <div className="flex justify-between items-center text-[9px] text-gray-400">
-                                    <span className="font-medium">Request Type : <b>Complaint</b></span>
+                                <div className={`flex justify-between items-center text-[9px] text-gray-400 ${isAr ? 'flex-row-reverse' : ''}`}>
+                                    <span className="font-medium">{t.mockups.requestType}</span>
                                 </div>
-                                <div className="flex justify-between items-center text-[9px] text-gray-400 border-t border-gray-50 pt-1.5">
-                                    <span className="font-medium">Request category : <b>Login issue</b></span>
+                                <div className={`flex justify-between items-center text-[9px] text-gray-400 border-t border-gray-50 pt-1.5 ${isAr ? 'flex-row-reverse' : ''}`}>
+                                    <span className="font-medium">{t.mockups.requestCategory}</span>
                                 </div>
                             </div>
                             
                             {/* Main Chat Bubble */}
-                            <div className="relative flex items-start gap-3 pb-6">
+                            <div className={`relative flex items-start gap-3 pb-6 ${isAr ? 'flex-row-reverse' : ''}`}>
                                 {/* Double Arrow Icon */}
                                 <div className="w-8 h-8 rounded-full bg-white shadow-md border border-gray-50 flex items-center justify-center flex-shrink-0 z-20 translate-y-1">
                                     <div className="flex -space-x-1">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" className={isAr ? 'rotate-180' : ''}>
                                             <polyline points="13 17 18 12 13 7"></polyline>
                                             <polyline points="6 17 11 12 6 7"></polyline>
                                         </svg>
                                     </div>
                                 </div>
                                 
-                                <div className="bg-white rounded-[18px] rounded-tl-none p-4 shadow-xl border border-gray-50 flex-grow z-10">
+                                <div className={`bg-white rounded-[18px] ${isAr ? 'rounded-tr-none' : 'rounded-tl-none'} p-4 shadow-xl border border-gray-50 flex-grow z-10 ${isAr ? 'text-right' : 'text-left'}`}>
                                     <div className="space-y-1">
-                                        <p className="text-[13px] font-bold text-gray-900">Hello, Faisal</p>
+                                        <p className="text-[13px] font-bold text-gray-900">{t.mockups.supportGreeting}</p>
                                         <p className="text-[10px] text-gray-500 leading-relaxed font-medium">
-                                            Your request has been submitted successfully. This is an automated message.
+                                            {t.mockups.supportMessage}
                                         </p>
-                                        <span className="text-[8px] text-gray-400 block pt-0.5 font-medium italic">02/09/2024 - 12:32 PM</span>
+                                        <span className="text-[8px] text-gray-400 block pt-0.5 font-medium italic">{t.mockups.supportTime}</span>
                                     </div>
                                 </div>
                             </div>

@@ -90,14 +90,21 @@ function Contact({ currentLang }) {
                     {/* left: Phone Mockup */}
                     <div className={`flex-1 w-full relative h-[400px] md:h-full flex items-center justify-center lg:justify-start order-2 ${isAr ? 'lg:order-2' : 'lg:order-1'}`}>
                         <div className="relative h-[95%] w-full flex items-center justify-center lg:justify-start top-[5%]">
-                            <img 
+                            {isAr ? <img isAr 
+                                src="/SecintArbic4.png"  
+                                alt="Tuwaiq Pay Analytics" 
+                                className={` scale-170 h-full w-auto object-contain z-10 drop-shadow-[0_35px_60px_rgba(0,0,0,0.2)]`}
+                                style={{
+                                    transform: isAr ? 'rotate(5deg)' : 'rotate(-5deg)'
+                                }}
+                            /> : <img isAr 
                                 src="/iPhone 15.png" 
                                 alt="Tuwaiq Pay Analytics" 
                                 className={`h-full w-auto object-contain z-10 drop-shadow-[0_35px_60px_rgba(0,0,0,0.2)]`}
                                 style={{
                                     transform: isAr ? 'rotate(5deg)' : 'rotate(-5deg)'
                                 }}
-                            />
+                            />}
                         </div>
                     </div>
 

@@ -62,9 +62,13 @@ function AppFeatures({ currentLang }) {
                 {/* Left Side: Image */}
                 <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
                     <img 
-                        src="PlaneTow.png" 
+                        src={isAr ? "/SecintArbic2.png" : "/PlaneTow.png"} 
                         alt="Mobile App Interface" 
                         className="w-full max-w-[130px] lg:max-w-[360px] h-auto object-contain"
+                        style={{
+                            clipPath: isAr ? 'inset(1px)' : 'none',
+                            transform: isAr ? 'scale(1.01)' : 'none'
+                        }}
                     />
                 </div>
 

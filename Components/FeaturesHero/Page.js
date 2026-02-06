@@ -137,9 +137,13 @@ function FeaturesHero({ currentLang }) {
         <div className="w-full lg:w-[45%] relative flex justify-center lg:justify-end min-h-[400px] lg:min-h-[500px]">
           <div className="relative w-full max-w-[550px] lg:max-w-[700px] h-full flex lg:items-start justify-center">
             <img
-              src="/HeroFeatures.png"
+              src={isAr ? "/SecintArbic5.png" : "/HeroFeatures.png"}
               alt="Tuwaiq Pay Features"
               className="w-full h-auto object-contain lg:mt-[-5px]"
+              style={{
+                clipPath: isAr ? 'inset(1px)' : 'none',
+                transform: isAr ? 'scale(1.01)' : 'none'
+              }}
             />
           </div>
         </div>
