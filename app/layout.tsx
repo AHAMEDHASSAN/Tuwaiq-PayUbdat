@@ -15,15 +15,8 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Tuwaiq Pay | طويق باي",
   description: "Smart Payment Solutions for Freelancers and Businesses in Saudi Arabia",
-  manifest: "/manifest.json",
   icons: {
     icon: '/Logo.png',
-  },
-  themeColor: "#2563EB",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "Tuwaiq Pay",
   },
 };
 
@@ -42,17 +35,6 @@ export default function RootLayout({
       >
         {children}
         <WhatsApp />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/sw.js');
-                });
-              }
-            `,
-          }}
-        />
       </body>
     </html>
   );
