@@ -48,20 +48,21 @@ function Contact({ currentLang }) {
         e.preventDefault();
         setStatus('loading');
 
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwp5RyzSqUOYvHk32Z7_mc04_1PGMTph5420eyu9pKrOc3HuyGyGQI3_jBUZtNQzARNg/exec';
-
         try {
-            await fetch(scriptURL, {
+            const response = await fetch('/api/contact', {
                 method: 'POST',
-                mode: 'no-cors',
                 headers: {
-                    'Content-Type': 'text/plain', 
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(formData)
             });
 
-            setStatus('success');
-            setFormData({ fullName: '', phone: '', subject: '', message: '' });
+            if (response.ok) {
+                setStatus('success');
+                setFormData({ fullName: '', phone: '', subject: '', message: '' });
+            } else {
+                throw new Error('Failed to send email');
+            }
             
             setTimeout(() => setStatus('idle'), 5000);
         } catch (error) {
@@ -90,17 +91,17 @@ function Contact({ currentLang }) {
                     {/* left: Phone Mockup */}
                     <div className={`flex-1 w-full relative h-[400px] md:h-full flex items-center justify-center lg:justify-start order-2 ${isAr ? 'lg:order-2' : 'lg:order-1'}`}>
                         <div className="relative h-[95%] w-full flex items-center justify-center lg:justify-start top-[5%]">
-                            {isAr ? <img isAr 
+                            {isAr ? <img 
                                 src="/SecintArbic4.png"  
                                 alt="Tuwaiq Pay Analytics" 
-                                className={` scale-170 h-full w-auto object-contain z-10 drop-shadow-[0_35px_60px_rgba(0,0,0,0.2)]`}
+                                className={` scale-110 h-full w-auto object-contain z-10 drop-shadow-[0_35px_60px_rgba(0,0,0,0.2)]`}
                                 style={{
                                     transform: isAr ? 'rotate(5deg)' : 'rotate(-5deg)'
                                 }}
-                            /> : <img isAr 
+                            /> : <img 
                                 src="/iPhone 15.png" 
                                 alt="Tuwaiq Pay Analytics" 
-                                className={`h-full w-auto object-contain z-10 drop-shadow-[0_35px_60px_rgba(0,0,0,0.2)]`}
+                                className={`scale-90 h-full w-auto object-contain z-10 drop-shadow-[0_35px_60px_rgba(0,0,0,0.2)]`}
                                 style={{
                                     transform: isAr ? 'rotate(5deg)' : 'rotate(-5deg)'
                                 }}

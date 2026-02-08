@@ -97,7 +97,7 @@ function AcceptPayments({ currentLang }) {
                             <img 
                                 src={isAr ? "/SecintArbic3.png" : "/banner mockup 1.png"} 
                                 alt="Tuwaiq Pay App Mobile" 
-                                className="block md:hidden w-[85%] h-auto object-contain z-10"
+                                className="block md:hidden w-[85%] h-auto object-contain z-10 translate-y-6"
                                 style={{ 
                                     filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.15))',
                                     clipPath: isAr ? 'inset(1px)' : 'none'
@@ -107,7 +107,7 @@ function AcceptPayments({ currentLang }) {
                             <img 
                                 src={isAr ? "/SecintArbic3.png" : "/PlaneThree.png"} 
                                 alt="Tuwaiq Pay App Desktop" 
-                                className="hidden md:block h-full w-auto object-contain z-10 md:h-[100%] md:w-auto"
+                                className={`hidden md:block h-full w-auto object-contain z-10 md:h-[100%] md:w-auto ${isAr ? 'scale-125' : 'scale-125 -translate-y-6'}`}
                                 style={{ 
                                     filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.15))',
                                     clipPath: isAr ? 'inset(1px 2px 0 2px)' : 'none'

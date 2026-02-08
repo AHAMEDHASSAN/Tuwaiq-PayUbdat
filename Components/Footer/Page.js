@@ -43,7 +43,7 @@ function Footer({ currentLang }) {
             blogs: "المدونة",
             contact: "اتصل بنا",
             terms: "الشروط والأحكام",
-            copyright: "© 2025 طويق باي. جميع الحقوق محفوظة",
+            copyright: "© 2026 طويق باي. جميع الحقوق محفوظة",
             appStoreSub: "حمّل من",
             appStoreTitle: "App Store",
             googlePlaySub: "احصل عليه من",

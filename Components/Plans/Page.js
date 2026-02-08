@@ -139,8 +139,8 @@ function Plans({ currentLang }) {
                 </div>
 
                 {/* Free Plan Pricing Title */}
-                <div className="mb-6">
-                    <span className="text-gray-400 text-lg md:text-xl font-medium">
+                <div className={`mb-6 ${isAr ? 'text-right' : 'text-left'} md:text-center`}>
+                    <span className="text-gray-500 text-xl md:text-2xl font-bold block">
                         {t.freePlan}
                     </span>
                 </div>

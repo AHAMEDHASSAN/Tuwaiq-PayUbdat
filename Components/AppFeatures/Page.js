@@ -27,7 +27,7 @@ function AppFeatures({ currentLang }) {
                 { id: 2, text: "التحويلات البنكية", icon: "bank" },
                 { id: 3, text: "التسجيل الرقمي", icon: "user" },
                 { id: 4, text: "أسعار شفافة", icon: "pricing" },
-                { id: 5, text: "رابط الدفع و QR", icon: "qr" },
+                { id: 5, text: "رابط الدفع ورمز الاستجابة السريعة", icon: "qr" },
                 { id: 6, text: "تتبع المدفوعات", icon: "track" },
                 { id: 7, text: "دعم داخل التطبيق", icon: "support" }
             ],
@@ -48,7 +48,7 @@ function AppFeatures({ currentLang }) {
             case "bank": return <svg xmlns="http://www.w3.org/2000/svg" className={classes} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" /></svg>;
             case "user": return <svg xmlns="http://www.w3.org/2000/svg" className={classes} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>;
             case "pricing": return <svg xmlns="http://www.w3.org/2000/svg" className={classes} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
-            case "qr": return <svg xmlns="http://www.w3.org/2000/svg" className={classes} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v1m6 11h2m-6 0h-2v4h2v-4zm-6 0H6.414a1 1 0 00-.707.293L4 16.586V18h2.586l1.707-1.707A1 1 0 008.586 16H8v-1zM4 11h2v2H4v-2zm2 0h2v2H6v-2zm2 0h2v2H8v-2zm-6 3h2v2H2v-2zm2 0h2v2H4v-2zm2 0h2v2H6v-2zm14-5v1m-6 0h-2v1h2V9zm-2 2h-2v1h2v-1zm2 1h-2v1h2v-1zm-4 1h-2v1h2v-1zm4-5v2h-2V7h2zm-4 0v2h-2V7h2z" /></svg>; // Approximate QR
+            case "qr": return <img src="/link-square.png" alt="Payment Link & QR" className={classes} />;
             case "track": return <svg xmlns="http://www.w3.org/2000/svg" className={classes} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>;
             case "support": return <svg xmlns="http://www.w3.org/2000/svg" className={classes} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" /></svg>;
             default: return null;
@@ -64,10 +64,9 @@ function AppFeatures({ currentLang }) {
                     <img 
                         src={isAr ? "/SecintArbic2.png" : "/PlaneTow.png"} 
                         alt="Mobile App Interface" 
-                        className="w-full max-w-[130px] lg:max-w-[360px] h-auto object-contain"
+                        className="w-full max-w-[180px] lg:max-w-[450px] h-auto object-contain scale-110"
                         style={{
-                            clipPath: isAr ? 'inset(1px)' : 'none',
-                            transform: isAr ? 'scale(1.01)' : 'none'
+                            clipPath: isAr ? 'inset(1px)' : 'none'
                         }}
                     />
                 </div>
