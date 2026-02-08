@@ -105,7 +105,7 @@ function AppFeatures({ currentLang }) {
                                 {t.features.slice(3, 5).map((feature) => (
                                     <div key={feature.id} className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-[100px] p-[10px] transition-transform hover:scale-105">
                                         {renderIcon(feature.icon)}
-                                        <span className="text-white font-medium text-[13px] whitespace-nowrap">{feature.text}</span>
+                                        <span className={`text-white font-medium ${isAr && feature.id === 5 ? 'text-[10px] whitespace-normal text-center leading-tight' : 'text-[13px] whitespace-nowrap'}`}>{feature.text}</span>
                                     </div>
                                 ))}
                             </div>
